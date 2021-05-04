@@ -2,7 +2,7 @@ import React from "react";
 
 import "./button.styles.css";
 
-function Button({ children, type, width, height, isActive, handleActiveBtn }) {
+function Button({ children, type, width, height, isActive, handleBtnClick }) {
   return (
     <button
       className="btn btn-custom"
@@ -11,7 +11,7 @@ function Button({ children, type, width, height, isActive, handleActiveBtn }) {
         height,
         background: `${isActive ? "#FBC91b" : "#F2F2F2"}`,
       }}
-      onClick={() => handleActiveBtn(type)}
+      onClick={type ? () => handleBtnClick(type) : () => alert("other function")}
     >
       {children}
     </button>

@@ -31,4 +31,13 @@ body {
   font-size: 1.6rem;
   outline: none;
   padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+/* Brand color variable */
+:root {
+  --primary-color: #FBC91b;
+  --secondary-color: #F2F2F2;
+  --text-primary: #2E2E2E;
+  --text-secondary: #808080;
 }

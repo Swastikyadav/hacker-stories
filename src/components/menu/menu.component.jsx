@@ -18,7 +18,7 @@ function Menu() {
         width="61px"
         height="auto"
         isActive={activeBtn === "new"}
-        handleActiveBtn={handleActiveBtn}
+        handleBtnClick={handleActiveBtn}
       >
         New
       </Button>
@@ -28,7 +28,7 @@ function Menu() {
         width="61px"
         height="auto"
         isActive={activeBtn === "past"}
-        handleActiveBtn={handleActiveBtn}
+        handleBtnClick={handleActiveBtn}
       >
         Past
       </Button>
