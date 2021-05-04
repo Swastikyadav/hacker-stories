@@ -16,7 +16,7 @@ function Menu() {
       <Button
         type="new"
         width="61px"
-        height="24px"
+        height="auto"
         isActive={activeBtn === "new"}
         handleActiveBtn={handleActiveBtn}
       >
@@ -26,7 +26,7 @@ function Menu() {
       <Button
         type="past"
         width="61px"
-        height="24px"
+        height="auto"
         isActive={activeBtn === "past"}
         handleActiveBtn={handleActiveBtn}
       >
