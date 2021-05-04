@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import { getStory } from "../../services/API";
+import { calculateTimeDifference } from "../../utils";
 
 import "./storyCard.styles.css";
 
-function Story() {
+function Story({ storyId }) {
+  const [story, setStory] = useState({});
+
+  useEffect(() => {
+    getStory(storyId)
+      .then(response => response.json())
+      .then((data) => data && setStory({
+        comments: data.descendants,
+        id: data.id,
+        text: data.text || "No MetaData is available for this story.",
+        time: data.time,
+        title: data.title || "No Title is available.",
+        url: data.url,
+      }))
+  }, []);
+
   return (
-    <a href="#" className="card-anchor" target="_blank">
+    <a href={`https://news.ycombinator.com/item?id=${story.id}`} className="card-anchor" target="_blank">
       <article className="story">
         <p className="title">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          {story.title}
         </p>
         <p className="text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, veniam natus neque saepe distinctio alias aperiam quod voluptates dolorem reprehenderit odit suscipit quis numquam magni nobis enim, itaque, repellendus esse!
+          {story.text}
         </p>
         <p className="story-footer">
-          &#128336; 1 min ago | 50 comments
+          &#128336; {calculateTimeDifference(Date.now(), story.time)} ago | {story.comments} comments
         </p>
       </article>
     </a>
