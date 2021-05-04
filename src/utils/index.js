@@ -10,13 +10,13 @@ export const calculateTimeDifference = (dateNow, storyTimestamp) => {
 
   let time;
   if (days) {
-    time = days + "days";
+    time = days + " days";
   } else if (hours) {
-    time = hours + "hours";
+    time = hours + " hours";
   } else if (minutes) {
-    time = minutes + "minutes";
+    time = minutes + " minutes";
   } else if (seconds) {
-    time = seconds + "seconds";
+    time = seconds + " seconds";
   }
 
   return time;

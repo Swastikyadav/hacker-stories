@@ -19,7 +19,7 @@ function Story({ storyId }) {
         title: data.title || "No Title is available.",
         url: data.url,
       }))
-  }, []);
+  }, [storyId]);
 
   return (
     <a href={`https://news.ycombinator.com/item?id=${story.id}`} className="card-anchor" target="_blank">
