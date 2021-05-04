@@ -2,3 +2,7 @@
   position: relative;
   top: 6.7rem;
 }
+
+.menu-bar button {
+  margin: 0 .5rem;
+}
