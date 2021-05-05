@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 
 import StoryCard from "../storyCard/storyCard.component";
 import Button from "../button/button.component";
@@ -12,7 +12,7 @@ function Main({ isNewStory }) {
   const [loading, setLoading] = useState(true);
   const [visibleStoriesCount, setVisibleStoriesCount] = useState(10);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getStoryIds(isNewStory)
       .then(response => response.json())
       .then(data => setStoriesId(data))

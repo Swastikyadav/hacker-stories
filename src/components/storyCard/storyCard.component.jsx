@@ -30,7 +30,7 @@ function Story({ storyId }) {
 
   const Card = () => {
     return (
-      <a href={`https://news.ycombinator.com/item?id=${story.id}`} className="card-anchor" target="_blank">
+      <a href={`https://news.ycombinator.com/item?id=${story.id}`} className="card-anchor" target="_blank" rel="noreferrer">
         <article className="story">
           <p className="title">
             {story.title}
