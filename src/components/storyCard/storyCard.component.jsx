@@ -14,14 +14,17 @@ function Story({ storyId }) {
   useEffect(() => {
     getStory(storyId)
       .then(response => response.json())
-      .then((data) => data && setStory({
-        comments: data.descendants,
-        id: data.id,
-        text: data.text || "No MetaData is available for this story.",
-        time: data.time,
-        title: data.title || "No Title is available.",
-        url: data.url,
-      }))
+      .then((data) => {
+        data && setStory({
+          comments: data.descendants,
+          id: data.id,
+          text: data.text || "No MetaData is available for this story.",
+          time: data.time,
+          title: data.title || "No Title is available.",
+          url: data.url,
+        })
+      })
+      .catch(error => console.log(error, error.message))
       .finally(() => setLoading(false));
   }, [storyId]);
 

@@ -4,11 +4,17 @@ import Button from "../button/button.component"
 
 import "./menu.styles.css";
 
-function Menu() {
+function Menu({ setIsNewStory }) {
   const [activeBtn, setActiveBtn] = useState("new");
 
   const handleActiveBtn = (btn) => {
     setActiveBtn(btn);
+    
+    if (btn === "new") {
+      setIsNewStory(true);
+    } else if (btn === "past") {
+      setIsNewStory(false);
+    }
   }
 
   return (

@@ -7,17 +7,18 @@ import { getStoryIds } from "../../services/API";
 
 import "./main.styles.css";
 
-function Main() {
+function Main({ isNewStory }) {
   const [storiesId, setStoriesId] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visibleStoriesCount, setVisibleStoriesCount] = useState(10);
 
   useEffect(() => {
-    getStoryIds()
+    getStoryIds(isNewStory)
       .then(response => response.json())
       .then(data => setStoriesId(data))
+      .catch(error => console.log(error, error.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [isNewStory]);
 
   const loadMoreStories = () => {
     setVisibleStoriesCount(visibleStoriesCount + 10);
