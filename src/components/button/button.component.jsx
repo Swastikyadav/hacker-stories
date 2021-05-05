@@ -11,7 +11,7 @@ function Button({ children, type, width, height, isActive, handleBtnClick }) {
         height,
         background: `${isActive ? "#FBC91b" : "#F2F2F2"}`,
       }}
-      onClick={type ? () => handleBtnClick(type) : () => alert("other function")}
+      onClick={type ? () => handleBtnClick(type) : () => handleBtnClick()}
     >
       {children}
     </button>

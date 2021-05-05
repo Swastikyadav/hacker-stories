@@ -10,6 +10,7 @@ import "./main.styles.css";
 function Main() {
   const [storiesId, setStoriesId] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [visibleStoriesCount, setVisibleStoriesCount] = useState(10);
 
   useEffect(() => {
     getStoryIds()
@@ -18,11 +19,15 @@ function Main() {
       .finally(() => setLoading(false));
   }, []);
 
+  const loadMoreStories = () => {
+    setVisibleStoriesCount(visibleStoriesCount + 10);
+  }
+
   const StoriesContainer = () => {
     return (
       <main className="stories-container">
         {
-          storiesId.map(storyId =>
+          storiesId.slice(0, visibleStoriesCount).map(storyId =>
             <StoryCard
               key={storyId}
               storyId={storyId}
@@ -30,7 +35,15 @@ function Main() {
           )
         }
 
-        <Button width="100%" height="48px" type="" isActive={true}>Load More</Button>
+        <Button
+          width="100%"
+          height="48px"
+          type=""
+          isActive={true}
+          handleBtnClick={loadMoreStories}
+        >
+          Load More
+        </Button>
       </main>
     );
   }
