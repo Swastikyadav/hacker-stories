@@ -9,26 +9,38 @@ import "./main.styles.css";
 
 function Main() {
   const [storiesId, setStoriesId] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getStoryIds()
       .then(response => response.json())
       .then(data => setStoriesId(data))
+      .finally(() => setLoading(false));
   }, []);
 
-  return (
-    <main className="stories-container">
-      {
-        storiesId.map(storyId =>
-          <StoryCard
-            key={storyId}
-            storyId={storyId}
-          />
-        )
-      }
+  const StoriesContainer = () => {
+    return (
+      <main className="stories-container">
+        {
+          storiesId.map(storyId =>
+            <StoryCard
+              key={storyId}
+              storyId={storyId}
+            />
+          )
+        }
 
-      <Button width="100%" height="48px" type="" isActive={true}>Load More</Button>
-    </main>
+        <Button width="100%" height="48px" type="" isActive={true}>Load More</Button>
+      </main>
+    );
+  }
+
+  return (
+    <>
+      {
+        loading ? <p style={{fontSize: "32px", textAlign: "center", marginTop: "150px"}}>Loading...</p> : <StoriesContainer />
+      }
+    </>
   );
 }
 
