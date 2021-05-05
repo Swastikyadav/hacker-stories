@@ -13,11 +13,19 @@ function Main({ isNewStory }) {
   const [visibleStoriesCount, setVisibleStoriesCount] = useState(10);
 
   useLayoutEffect(() => {
+    let isSubscribed = true;
+
     getStoryIds(isNewStory)
       .then(response => response.json())
-      .then(data => setStoriesId(data))
+      .then(data => {
+        if (isSubscribed) {
+          setStoriesId(data)
+        }
+      })
       .catch(error => console.log(error, error.message))
       .finally(() => setLoading(false));
+
+    return () => isSubscribed = false;
   }, [isNewStory]);
 
   const loadMoreStories = () => {
