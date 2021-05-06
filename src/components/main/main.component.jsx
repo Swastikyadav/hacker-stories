@@ -18,11 +18,9 @@ function Main({ isNewStory }) {
     getStoryIds(isNewStory)
       .then(response => response.json())
       .then(data => {
-        if (isSubscribed) {
-          setStoriesId(data)
-        }
+        isSubscribed && setStoriesId(data)
       })
-      .catch(error => console.log(error, error.message))
+      .catch(error => alert(`${error.name}: ${error.message}`))
       .finally(() => setLoading(false));
 
     return () => isSubscribed = false;
