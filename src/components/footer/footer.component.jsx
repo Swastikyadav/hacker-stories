@@ -5,7 +5,10 @@ import "./footer.styles.css";
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer
+      data-testid="footer"
+      className="footer"
+    >
       <img src={logoDark} alt="logo" />
     </footer>
   );

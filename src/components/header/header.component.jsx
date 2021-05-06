@@ -5,7 +5,10 @@ import "./header.styles.css";
 
 function Header() {
   return (
-    <header className="header">
+    <header
+      data-testid="header"
+      className="header"
+    >
       <img src={logo} className="hc-logo" alt="logo" />
     </header>
   );

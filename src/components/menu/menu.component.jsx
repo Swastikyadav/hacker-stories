@@ -18,7 +18,7 @@ function Menu({ setIsNewStory }) {
   }
 
   return (
-    <section className="menu-bar">
+    <section data-testid="menu" className="menu-bar">
       <Button
         type="new"
         width="61px"

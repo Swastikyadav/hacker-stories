@@ -32,7 +32,7 @@ function Main({ isNewStory }) {
 
   const StoriesContainer = () => {
     return (
-      <main className="stories-container">
+      <main data-testid="main" className="stories-container">
         {
           storiesId.slice(0, visibleStoriesCount).map(storyId =>
             <StoryCard
