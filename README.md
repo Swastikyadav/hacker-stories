@@ -1,7 +1,5 @@
 
 # React Js: HackerNew Clone
-Note: I might have delayed in submmiting the assignment
-as the email was in my promotional tab.
 
 ## Installation 
 Install my-project with yarn. The following command will create node_modules and yarn.lock file.
