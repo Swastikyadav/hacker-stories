@@ -12,24 +12,32 @@ function Story({ storyId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let isSubscribed = true;
+    const fetchStory = async () => {
+      const response = await getStory(storyId);
+      const result = await response.json();
 
-    getStory(storyId)
-      .then(response => response.json())
-      .then((data) => {
-        isSubscribed && data && setStory({
-          comments: data.descendants,
-          id: data.id,
-          text: data.text || "No MetaData is available for this story.",
-          time: data.time,
-          title: data.title || "No Title is available.",
-          url: data.url,
+      try {
+        setStory({
+          comments: result.descendants,
+          id: result.id,
+          text: result.text || "No MetaData is available for this story.",
+          time: result.time,
+          title: result.title || "No Title is available.",
+          url: result.url,
         })
-      })
-      .catch(error => alert(`${error.name}: ${error.message}`))
-      .finally(() => setLoading(false));
+      } catch (error) {
+        alert(`${error.name}: ${error.message}`)
+      }
 
-    return () => isSubscribed = false;
+      setLoading(false);
+    }
+
+    fetchStory();
+
+    return () => {
+      setStory({});
+      setLoading(true);
+    }
   }, [storyId]);
 
   const Card = () => {

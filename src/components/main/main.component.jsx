@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import StoryCard from "../storyCard/storyCard.component";
 import Button from "../button/button.component";
@@ -12,18 +12,26 @@ function Main({ isNewStory }) {
   const [loading, setLoading] = useState(true);
   const [visibleStoriesCount, setVisibleStoriesCount] = useState(10);
 
-  useLayoutEffect(() => {
-    let isSubscribed = true;
+  useEffect(() => {
+    const fetchStoriesID = async () => {
+      try {
+        const response = await getStoryIds(isNewStory);
+        const result = await response.json();
+  
+        setStoriesId(result);
+      } catch (error) {
+        alert(`${error.name}: ${error.message}`)
+      }
 
-    getStoryIds(isNewStory)
-      .then(response => response.json())
-      .then(data => {
-        isSubscribed && setStoriesId(data)
-      })
-      .catch(error => alert(`${error.name}: ${error.message}`))
-      .finally(() => setLoading(false));
+      setLoading(false);
+    }
 
-    return () => isSubscribed = false;
+    fetchStoriesID();
+
+    return () => {
+      setStoriesId([]);
+      setLoading(true);
+    };
   }, [isNewStory]);
 
   const loadMoreStories = () => {
