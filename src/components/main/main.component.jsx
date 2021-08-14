@@ -28,21 +28,25 @@ function Main({ isNewStory }) {
           )
         }
 
-        <Button
-          width="100%"
-          height="48px"
-          type=""
-          isActive={true}
-          handleBtnClick={loadMoreStories}
-        >
-          Load More
-        </Button>
+        {
+          !storiesId.errorMessage &&
+          <Button
+            width="100%"
+            height="48px"
+            type=""
+            isActive={true}
+            handleBtnClick={loadMoreStories}
+          >
+            Load More
+          </Button>
+        }
       </main>
     );
   }
 
   return (
     <>
+      { storiesId.errorMessage ? <p style={{fontSize: "32px", textAlign: "center", marginTop: "150px", color: "red"}}>{ storiesId.errorMessage }</p> : "" }
       {
         storiesId.isLoading ? <p style={{fontSize: "32px", textAlign: "center", marginTop: "150px"}}>Loading...</p> : <StoriesContainer />
       }

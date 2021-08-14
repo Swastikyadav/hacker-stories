@@ -31,6 +31,7 @@ function Story({ storyId }) {
 
   return (
     <>
+      { story.errorMessage ? <p style={{fontSize: "32px", textAlign: "center", marginTop: "150px", color: "red"}}>{ story.errorMessage }</p> : "" }
       {
         story.isLoading ? <SkeletonLoader /> : <Card />
       }

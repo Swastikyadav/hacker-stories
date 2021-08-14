@@ -7,16 +7,19 @@ const dataReducer = (state, action) => {
         ...state,
         isLoading: false,
         data: action.payload,
+        errorMessage: ""
       };
     case "DATA_FETCH_FAILURE":
       return {
         ...state,
         isLoading: false,
+        errorMessage: action.payload
       };
     case "SET_DEFAULT_STATE":
       return {
-        data: "",
+        data: [],
         isLoading: true,
+        errorMessage: ""
       }
     default:
       throw new Error();
@@ -26,7 +29,7 @@ const dataReducer = (state, action) => {
 function useFetch(fetchFunction, dependencyArrayItem) {
   const [value, dispatchValue] = useReducer(
     dataReducer,
-    { data: "", isLoading: true }
+    { data: [], isLoading: true, errorMessage: "" }
   );
 
   useEffect(() => {
@@ -34,11 +37,12 @@ function useFetch(fetchFunction, dependencyArrayItem) {
       try {
         const response = await fetchFunction(dependencyArrayItem);
         const result = await response.json();
-  
+
+        // throw new Error("Something Went Wrong!");
+        
         dispatchValue({ type: "DATA_FETCH_SUCCESS", payload: result });
       } catch (error) {
-        alert(`${error.name}: ${error.message}`)
-        dispatchValue({ type: "DATA_FETCH_FAILURE" });
+        dispatchValue({ type: "DATA_FETCH_FAILURE", payload: `${error.message}` });
       }
     }
 
