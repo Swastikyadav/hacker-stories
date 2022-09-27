@@ -6,13 +6,13 @@ This document is intended for developers interested in making contributions to h
 
 ## Getting Started
 
-Clone the repository here: 
+Fork and Clone this repository.
 
 Read the README.md file for setting up your development environment.
 
 ## How to contribute
 
-1. Clone this repo.
+1. Fork and Clone this repo.
 2. Take a new branch from master.
 3. Branch name should start with issue number, like this - `Issue-1548 feature or bug name`.
 4. Make your changes in this branch.
