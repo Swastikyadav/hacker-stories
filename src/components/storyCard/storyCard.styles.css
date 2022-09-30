@@ -3,7 +3,9 @@
 }
 
 .story {
-  width: 100%;
+  width: 30vw;
+  max-width: 30vw;
+  margin-right: 2vw;
   box-shadow: 0px 3px 28px rgba(0, 0, 0, 0.08);
   background: #fff;
   border-radius: 12px;
@@ -34,4 +36,12 @@
   line-height: 1.1rem;
   font-style: normal;
   color: var(--text-secondary);
+}
+
+@media only screen and (max-width: 768px),
+only screen and (max-device-width: 768px){
+  .story{
+    width: 100%;
+    max-width: 100%;
+  }
 }

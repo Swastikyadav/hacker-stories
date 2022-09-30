@@ -1,10 +1,22 @@
 .stories-container {
   width: 100%;
-  height: 500px;
+  /* height: 500px; */
   position: relative;
   top: 90px;
+  display: flex;
+  flex-flow: row wrap;
+  border: 0px solid red;
 }
 
 .stories-container button {
   margin-bottom: 12rem;
+}
+
+@media only screen and (max-width: 768px),
+only screen and (max-device-width: 768px){
+
+  .stories-container{
+    display: flex;
+    flex-flow: column nowrap;
+  }
 }
