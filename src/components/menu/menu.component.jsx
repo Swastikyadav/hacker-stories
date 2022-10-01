@@ -36,7 +36,7 @@ function Menu({ setIsNewStory }) {
         isActive={activeBtn === "past"}
         handleBtnClick={handleActiveBtn}
       >
-        Past
+        Best
       </Button>
     </section>
   );
