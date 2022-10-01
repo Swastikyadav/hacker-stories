@@ -8,13 +8,14 @@ import { getStoryIds } from "../../services/API";
 
 import "./main.styles.css";
 
-function Main({ isNewStory }) {
+function Main({ isNewStory, visibleStoriesCount, setVisibleStoriesCount, loadMoreStories}) {
   const [storiesId] = useFetch(getStoryIds, isNewStory);
-  const [visibleStoriesCount, setVisibleStoriesCount] = useState(10);
+  //const [] = useFetch();
+  // const [visibleStoriesCount, setVisibleStoriesCount] = useState(10);
 
-  const loadMoreStories = () => {
-    setVisibleStoriesCount(visibleStoriesCount + 10);
-  }
+  // const loadMoreStories = () => {
+  //   setVisibleStoriesCount(visibleStoriesCount + 10);
+  // }
 
   const StoriesContainer = () => {
     return (
