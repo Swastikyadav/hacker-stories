@@ -38,7 +38,7 @@ function Menu({ setIsNewStory, cardCount }) {
       >
         Past
       </Button>
-      <p>{cardCount}</p>
+      <Button>Stories Count: {cardCount}</Button>
     </section>
   );
 }
