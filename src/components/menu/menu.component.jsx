@@ -4,7 +4,7 @@ import Button from "../button/button.component"
 
 import "./menu.styles.css";
 
-function Menu({ setIsNewStory }) {
+function Menu({ setIsNewStory, cardCount }) {
   const [activeBtn, setActiveBtn] = useState("new");
 
   const handleActiveBtn = (btn) => {
@@ -38,6 +38,7 @@ function Menu({ setIsNewStory }) {
       >
         Best
       </Button>
+      <Button>Stories Count: {cardCount}</Button>
     </section>
   );
 }
