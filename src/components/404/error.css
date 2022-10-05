@@ -1,0 +1,12 @@
+.image>img{
+    width: 70w;
+    height: 70vh; 
+}
+
+.image{
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    margin-top: 10vh;
+    margin-bottom: 15vh;
+}
