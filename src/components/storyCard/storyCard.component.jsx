@@ -11,6 +11,24 @@ import "./storyCard.styles.css";
 function Story({ storyId }) {
   const [story] = useFetch(getStory, storyId);
 
+  const handleMetadata = (metadata) => {
+    if (metadata !== undefined) {
+      const filteredMetadata = metadata
+        .replace(/&#x([0-9a-f]+);/gi, (_, code) =>
+          String.fromCharCode(parseInt(code, 16))
+        )
+        .replace("<p>", "");
+
+      if (filteredMetadata.length >= 125) {
+        return filteredMetadata.slice(0, 125) + "...";
+      }
+
+      return filteredMetadata;
+    }
+
+    return "No MetaData is available.";
+  };
+
   const Card = () => {
     return (
       <a href={`https://news.ycombinator.com/item?id=${story.data.id}`} className="card-anchor" target="_blank" rel="noreferrer">
@@ -18,9 +36,7 @@ function Story({ storyId }) {
           <p className="title">
             {story.data.title || "No Title is available."}
           </p>
-          <p className="text">
-            {story.data.text || "No MetaData is available for this story."}
-          </p>
+          <p className="text">{handleMetadata(story.data.text)}</p>
           <p className="story-footer">
             &#128336; {calculateTimeDifference(Date.now(), story.data.time)} ago | {story.data.descendants} comments
           </p>
